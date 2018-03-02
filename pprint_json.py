@@ -2,13 +2,17 @@ import json
 import argparse
 import os.path
 import codecs
+import sys
 
 
 def load_data(filepath):
     with codecs.open(filepath, "r", "utf-8") as json_file:
         json_content = json_file.read()
         json_file.close()
-        return json.loads(json_content)
+        try:
+            return json.loads(json_content)
+        except json.decoder.JSONDecodeError:
+            return None
 
 
 def pretty_print_json(data):
@@ -32,4 +36,7 @@ if __name__ == '__main__':
         print("error: can't find file {}".format(json_path))
         sys.exit()
     parsed_json = load_data(json_path)
+    if not parsed_json:
+        print("file content is not valid json")
+        sys.exit()
     pretty_print_json(parsed_json)
