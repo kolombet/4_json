@@ -15,14 +15,15 @@ def load_data(filepath):
             return None
 
 
-def pretty_print_json(data):
-    print(json.dumps(data, indent=4, sort_keys=True, ensure_ascii=False))
+def pretty_print_json(parsed_json):
+    print(json.dumps(parsed_json, indent=4, sort_keys=True,
+                     ensure_ascii=False))
 
 
 def get_json_path():
     parser = argparse.ArgumentParser()
-    help = "custom json file path"
-    parser.add_argument("-f", "--file", dest="json_path", help="help")
+    parser.add_argument("-f", "--file", dest="json_path",
+                        help="custom json file path")
     args = parser.parse_args()
     json_path = args.json_path
     if json_path is None:
