@@ -1,17 +1,27 @@
 # Prettify JSON
 
-[TODO. There will be project description]
+This script searches file _raw.json_ in current working directory and output it's content to the terminal in human readable format.
+
+You can specify input file with parameter -f or --file
 
 # Quickstart
 
-[TODO]
+To run this script, you need any file with valid json content.
+example.json content:
+```
+{"hello":"world", "value":13}
+```
 
 Example of script launch on Linux, Python 3.5:
 
 ```bash
 
-$ python pprint_json.py <path to file>
-# TODO add output example
+$ python3 pprint_json.py -f example.json 
+{
+    "hello": "world",
+    "value": 13
+}
+
 
 ```
 
