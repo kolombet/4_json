@@ -14,11 +14,6 @@ def load_data(filepath):
             return None
 
 
-def pretty_print_json(parsed_json):
-    print(json.dumps(parsed_json, indent=4, sort_keys=True,
-                     ensure_ascii=False))
-
-
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -38,4 +33,10 @@ if __name__ == "__main__":
     parsed_json = load_data(json_path)
     if not parsed_json:
         sys.exit("file content is not valid json")
-    pretty_print_json(parsed_json)
+    json_dump = json.dumps(
+        parsed_json,
+        indent=4,
+        sort_keys=True,
+        ensure_ascii=False
+    )
+    print(json_dump)
