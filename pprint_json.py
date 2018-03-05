@@ -26,6 +26,16 @@ def get_args():
     return parser.parse_args()
 
 
+def dump_json(parsed_json):
+    json_dump = json.dumps(
+        parsed_json,
+        indent=4,
+        sort_keys=True,
+        ensure_ascii=False
+    )
+    return json_dump
+
+
 if __name__ == "__main__":
     json_path = get_args().json_path
     if not os.path.isfile(json_path):
@@ -33,10 +43,4 @@ if __name__ == "__main__":
     parsed_json = load_data(json_path)
     if not parsed_json:
         sys.exit("file content is not valid json")
-    json_dump = json.dumps(
-        parsed_json,
-        indent=4,
-        sort_keys=True,
-        ensure_ascii=False
-    )
-    print(json_dump)
+    print(dump_json(parsed_json))
